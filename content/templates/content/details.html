@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+        <h1 class="text-center"> {{content.title}} </h1>
+        <p class="text-center"> {{content.body}} </p>
+    </div>
+  </div>
+
+<br/>
+<br/>
+<br/>
+
+{% if error %}
+{{ error }}
+<br/>
+<br/>
+{% endif %}
+
+
+  <div class="row">
+  <div class="card col-8 mx-auto shadow-sm pt-4 pr-4 pl-4 mb-5 bg-white rounded">
+    <div class="card-body form-group">
+      <h5> 1. Readability </h5>
+      <p> On a scale of from 1-5 how would you rate the readability of the piece? </p>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio1" value="option1">
+          <label class="form-check-label" for="inlineRadio1">1</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio2" value="option2">
+          <label class="form-check-label" for="inlineRadio2">2</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio3" value="option3">
+          <label class="form-check-label" for="inlineRadio3">3</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio4" value="option4">
+          <label class="form-check-label" for="inlineRadio2">4</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio5" value="option5">
+          <label class="form-check-label" for="inlineRadio5">5</label>
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1"></label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Comments?"></textarea>
+        </div>
+    </div>
+    <!-- <div class="card-body form-group">
+      <h5> 1. Actionability </h5>
+      <p> On a scale of from 1-5 how would you rate the readability of the piece? </p>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio1" value="option1">
+          <label class="form-check-label" for="inlineRadio1">1</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="option2">
+          <label class="form-check-label" for="inlineRadio2">2</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio3" value="option3">
+          <label class="form-check-label" for="inlineRadio3">3</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio4" value="option4">
+          <label class="form-check-label" for="inlineRadio2">4</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio5" value="option5">
+          <label class="form-check-label" for="inlineRadio5">5</label>
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1"></label>
+          <textarea class="form-control" id="exampleFormControlTextarea2" rows="5" placeholder="Comments?"></textarea>
+        </div>
+    </div>
+     <div class="card-body form-group">
+      <h5> 3. X </h5>
+      <p> On a scale of from 1-5 how would you rate the X of the piece? </p>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio1" value="option1">
+          <label class="form-check-label" for="inlineRadio1">1</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio2" value="option2">
+          <label class="form-check-label" for="inlineRadio2">2</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio3" value="option3">
+          <label class="form-check-label" for="inlineRadio3">3</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio4" value="option4">
+          <label class="form-check-label" for="inlineRadio2">4</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio5" value="option5">
+          <label class="form-check-label" for="inlineRadio5">5</label>
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea3"></label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Comments?"></textarea>
+        </div>
+    </div>
+    <div class="card-body form-group">
+        <h5> General Comments? </h5>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea3"></label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" placeholder="Comments?"></textarea>
+        </div>
+    </div> -->
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+          <br/>
+          <br/>
+    </div>
+  </div>
+
+{% endblock %}
