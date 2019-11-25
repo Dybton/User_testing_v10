@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Review, Content
 
-# Create your views here.
-
 
 @login_required(login_url="homepage")
 def home(request):
@@ -56,28 +54,9 @@ def add_review(request, content_id):
         review.actionability = request.POST['actionability']
         review.actionability_rating = request.POST['actionability_rating']
         review.general_comments = request.POST['general_comments']
+        review.save()
+        content.reviews_total = + 1
+        content.save()
         return redirect('home')
     else:
         return render(request, 'content/readerpage', {'error': 'You need to fill in all information'})
-# def add_review(request, content_id):
-
-# Will try adding a new view function for this functionality - am not strong enough in python to make a proper function
-# Create url
-# Fix the template
-# Add_review får postet en content_id??? hmm.
-
-
-# is_private = request.POST.get('is_private', False)
-
-# This is before I try to simplify it!
-# def add_review(request):
-#     if request.method == 'POST':
-#         if request.POST['readability']:
-#             review = Review()
-#             review.readability = request.POST['readability']
-#             review.save()
-#             return redirect('')
-#         else:
-#             return render(request, 'content/readerpage.html', {'error': 'You need to fill in all information'})
-#     else:
-#         return render(request, 'content/readerpage.html')
