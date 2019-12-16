@@ -63,14 +63,21 @@ WSGI_APPLICATION = 'user_testing.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
+# DATABASES = { # Postgresdatabase
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'user_testing1',
+#         'USER': 'postgres',
+#         'PASSWORD': 'django1234',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
+DATABASES = {  # SQLITE DATABASE
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'user_testing1',
-        'USER': 'postgres',
-        'PASSWORD': 'django1234',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

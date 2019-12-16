@@ -1,11 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Review, Content
+from django.db.models import Avg, Count, Min, Sum
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from .models import *
 
 
 @login_required(login_url="homepage")
 def home(request):
-    content = Content.objects
+    # content = Content.objects.annotate(avg=Avg('review__avg_rating')) - Note this is the old one
+    content = Content.objects.annotate(avg1=Avg(
+        'review__readability_rating'), avg2=Avg('review__actionability_rating'))
     return render(request, 'content/home.html', {'content': content})
 
 
@@ -42,6 +48,7 @@ def link(request, content_id):
 
 def readerpage(request, content_id):
     content = get_object_or_404(Content, pk=content_id)
+    # get the data I need here, store it in variable and pass it as something else
     return render(request, 'content/readerpage.html', {'content': content})
 
 
@@ -54,9 +61,13 @@ def add_review(request, content_id):
         review.actionability = request.POST['actionability']
         review.actionability_rating = request.POST['actionability_rating']
         review.general_comments = request.POST['general_comments']
+        review.avg = (float(review.readability_rating) +
+                      float(review.actionability_rating)) / 2
+        review.content = content
         review.save()
-        content.reviews_total = + 1
-        content.save()
         return redirect('home')
     else:
-        return render(request, 'content/readerpage', {'error': 'You need to fill in all information'})
+        return HttpResponseRedirect(reverse('readerpage', args=(content_id,)))
+        # return render (request, 'content/readerpage', {'error': 'You need to fill in all information'})
+
+        # make the quesry and store it in content.reviews.total
