@@ -5,13 +5,15 @@ from django.db.models import Avg, Count, Min, Sum
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import *
+from .forms import ReviewForm
+from django.views.generic.edit import FormView
 
 
 @login_required(login_url="homepage")
 def home(request):
-    # content = Content.objects.annotate(avg=Avg('review__avg_rating')) - Note this is the old one
-    content = Content.objects.annotate(avg1=Avg(
-        'review__readability_rating'), avg2=Avg('review__actionability_rating'))
+    content = Content.objects.annotate(
+        avg=Avg('review__avg_rating')).filter(user=request.user)
+
     return render(request, 'content/home.html', {'content': content})
 
 
@@ -26,6 +28,7 @@ def add(request):
             content = Content()
             content.title = request.POST['title']
             content.body = request.POST['body']
+            content.user = request.user
             content.save()
             return redirect('/content/link/' + str(content.id))
         else:
@@ -48,26 +51,37 @@ def link(request, content_id):
 
 def readerpage(request, content_id):
     content = get_object_or_404(Content, pk=content_id)
-    # get the data I need here, store it in variable and pass it as something else
-    return render(request, 'content/readerpage.html', {'content': content})
-
-
-def add_review(request, content_id):
-    content = get_object_or_404(Content, pk=content_id)
-    if request.POST['readability'] and request.POST['readability_rating'] and request.POST['actionability'] and request.POST['actionability_rating'] and request.POST['general_comments']:
-        review = Review()
-        review.readability = request.POST['readability']
-        review.readability_rating = request.POST['readability_rating']
-        review.actionability = request.POST['actionability']
-        review.actionability_rating = request.POST['actionability_rating']
-        review.general_comments = request.POST['general_comments']
-        review.avg = (float(review.readability_rating) +
-                      float(review.actionability_rating)) / 2
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+        review = form.save(commit=False)
         review.content = content
+        readability_rating = form.cleaned_data['readability_rating']
+        readability = form.cleaned_data['readability']
+        actionability_rating = form.cleaned_data['actionability_rating']
+        actionability = form.cleaned_data['actionability']
+        general_comments = form.cleaned_data['general_comments']
+        review.avg_rating = (float(readability_rating) +
+                             float(actionability_rating)) / 2
         review.save()
         return redirect('home')
-    else:
-        return HttpResponseRedirect(reverse('readerpage', args=(content_id,)))
-        # return render (request, 'content/readerpage', {'error': 'You need to fill in all information'})
+    args = {'content': content, 'form': form}
+    return render(request, 'content/readerpage.html', args)
 
-        # make the quesry and store it in content.reviews.total
+# How can I calculate the avg_rating?
+
+# def add_review(request, content_id):
+#     content = get_object_or_404(Content, pk=content_id)
+#     if request.POST['readability'] and request.POST['readability_rating'] and request.POST['actionability'] and request.POST['actionability_rating'] and request.POST['general_comments']:
+#         review = Review()
+#         review.readability = request.POST['readability']
+#         review.readability_rating = request.POST['readability_rating']
+#         review.actionability = request.POST['actionability']
+#         review.actionability_rating = request.POST['actionability_rating']
+#         review.general_comments = request.POST['general_comments']
+#         review.avg_rating = (float(review.readability_rating) +
+#                              float(review.actionability_rating)) / 2
+#         review.content = content
+#         review.save()
+#         return redirect('home')
+#     else:
+#         return HttpResponseRedirect(reverse('readerpage', args=(content_id,)))

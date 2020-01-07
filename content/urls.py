@@ -8,6 +8,9 @@ urlpatterns = [
     path('<int:content_id>', views.details, name='details'),
     path('link/<int:content_id>', views.link, name='link'),
     path('readerpage/<int:content_id>', views.readerpage, name='readerpage'),
-    path('readerpage/<int:content_id>/add_review',
-         views.add_review, name='add_review'),
+
 ]
+
+
+# path('readerpage/<int:content_id>/add_review',
+#      views.add_review, name='add_review'),
