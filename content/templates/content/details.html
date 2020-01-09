@@ -26,19 +26,18 @@
   <div class="card col-8 mx-auto shadow-sm pt-4 pr-4 pl-4 mb-4 bg-light rounded">
     <div class="row">
       <div class="card col-3 shadow-sm pt-3 pr-3 pl-3 pb-3 mb-4 ml-4 mr-1 bg-white rounded ">
-        <div class=" mx-auto"> Avg Rating: {{ content.avg }} </div>
+        <div class=" mx-auto"> Avg Rating: {{ content.avg |floatformat:1 }} </div>
       </div>
       <div class="card col-4 shadow-sm pt-3 pr-3 pl-3 pb-3 mb-4 mr-1 bg-white rounded ">
-        <div class="mx-auto"> Avg Readability: {{ content.avg_rr }} </div>
+        <div class="mx-auto"> Avg Readability: {{ content.avg_rr |floatformat:1}} </div>
       </div>
       <div class="card col-4 shadow-sm pt-3 pr-3 pl-3 pb-3 mb-4 bg-white rounded ">
-        <div class="mx-auto"> Avg Actionability: {{ content.avg_ar }} </div>
+        <div class="mx-auto"> Avg Actionability: {{ content.avg_ar |floatformat:1 }} </div>
       </div>
     </div>
   </div>
 
 {% for review in reviews reversed %}
-
 
 
   <div class="card col-8 mx-auto shadow-sm pt-1 pr-4 pl-2 mb-4 bg-white rounded">
@@ -48,31 +47,42 @@
           <div class ="col-9 mb-3 ml-3 mt-3 text-primary"> {{ review.name }}</div>
         </div>
         <div class="row">
-          <div class ="col mb-3 ml-3 text-muted"> {{ review.pub_date }} </div>
+          <div class ="col mb-3 ml-3 text-muted"> {{ review.pub_date_pretty }} </div>
         </div>
         <div class="row">
           <div class="card col-10 shadow-sm pt-3 pl-3 pb-3 mb-2 ml-3 bg-white rounded ">
-            <div class=" mx-auto"> Avg Rating: {{review.avg_rating}} </div>
+            <div class=" mx-auto"> Avg Rating: {{review.avg_rating |floatformat:1 }} </div>
           </div>
           <div class="card col-10 shadow-sm pt-3 pl-3 pb-3 mb-2 ml-3 bg-white rounded ">
-            <div class=" mx-auto"> Actionability: {{review.actionability_rating}} </div>
+            <div class=" mx-auto"> Actionability: {{review.actionability_rating |floatformat:1 }} </div>
           </div>
           <div class="card col-10 shadow-sm pt-3 pl-3 pb-3 mb-2 ml-3 bg-white rounded ">
-            <div class=" mx-auto"> Readability: {{review.readability_rating}} </div>
+            <div class=" mx-auto"> Readability: {{review.readability_rating |floatformat:1 }} </div>
           </div>
         </div>
   </div>
+
   <div class="col-8 mt-3">
+    <div class="row mt-1">
+    <h5> <u> Readability Comments </u> </h5>
+    </div>
     <div class="row">
+    <p> {{review.readability}} </p>
+    </div>
 
+    <div class="row">
+    <h5> <u> Actionability Comments </u> </h5>
+    </div>
+    <div class="row">
+    <p> {{review.actionability}} </p>
+    </div>
 
-
-    <h6> Readability Comments </h6>
-     <p> {{review.readability}} </p> <br/>
-    <h6> Actionability Comments </h6>
-      <p> {{review.actionability}} </p> <br/>
-    <h4>General Comments </h4>
-    <p>  {{review.general_comments}} </p> <br/>
+    <div class="row">
+    <h5> <u> General Comments </u> </h5>
+    </div>
+    <div class="row">
+    <p> {{review.general_comments}} </p>
+    </div>
 
      <!--  Make this into scroll - nvm
       Create loop and feed in data

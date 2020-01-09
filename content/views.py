@@ -7,6 +7,7 @@ from django.urls import reverse
 from .models import *
 from .forms import ReviewForm
 from django.views.generic.edit import FormView
+from django.utils import timezone
 
 
 @login_required(login_url="homepage")
@@ -68,6 +69,7 @@ def readerpage(request, content_id):
         general_comments = form.cleaned_data['general_comments']
         review.avg_rating = (float(readability_rating) +
                              float(actionability_rating)) / 2
+        review.pub_date = timezone.datetime.now()
         review.save()
         return redirect('home')
     args = {'content': content, 'form': form}
