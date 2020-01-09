@@ -39,8 +39,14 @@ def add(request):
 
 @login_required(login_url="/accounts/signup")
 def details(request, content_id):
-    content = get_object_or_404(Content, pk=content_id)
-    return render(request, 'content/details.html', {'content': content})
+    content = get_object_or_404(
+        Content.objects.annotate(
+            avg_rr=Avg('review__readability_rating'),
+            avg_ar=Avg('review__actionability_rating'),
+            avg=Avg('review__avg_rating')
+        ),
+        pk=content_id)
+    return render(request, 'content/details.html', {'content': content, 'reviews': Review.objects.filter(content_id=content_id)})
 
 
 @login_required(login_url="/accounts/signup")

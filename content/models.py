@@ -16,6 +16,7 @@ class Content(models.Model):
 
 class Review(models.Model):
     content = models.ForeignKey(Content, null=True, on_delete=models.CASCADE)
+    name = models.CharField(null=True, max_length=200)
     readability = models.CharField(null=True, max_length=500)
     readability_rating = models.IntegerField(null=True)
     actionability = models.CharField(null=True, max_length=500)
@@ -25,7 +26,6 @@ class Review(models.Model):
 
     def _str_(self):
         return self.title
-
 
 # 1. What is the aggregated avg value of readability rating? - make a function?
 # 2. What is the aggretaged avg value of actionability rating?

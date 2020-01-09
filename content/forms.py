@@ -3,6 +3,7 @@ from .models import Review
 
 
 class ReviewForm(forms.ModelForm):
+    name = forms.CharField(widget=forms.Textarea)
     readability_rating = forms.ChoiceField(
         choices=[(1, 1), (2, 2), (3, 3), (4, 4), (5, 5)])
     readability = forms.CharField(widget=forms.Textarea)
@@ -13,5 +14,5 @@ class ReviewForm(forms.ModelForm):
 
     class Meta:
         model = Review
-        fields = ['readability_rating', 'readability',
+        fields = ['name', 'readability_rating', 'readability',
                   'actionability_rating', 'actionability', 'general_comments']
