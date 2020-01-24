@@ -55,6 +55,8 @@
 
 <br/><br/> <!-- vertical spacing -->
 
+{% for review in reviews reversed %}
+
 <div class="row">
   <div class="col-2">
       <!-- horizontal spacing -->
@@ -65,19 +67,19 @@
       <div class="card-header">
         <div class="row">
           <div class="col-3">
-            <div class="text-primary"> Name Nameson </div>
+            <div class="text-primary"> {{ review.name }} </div>
           </div>
           <div class="col-6">
             <!-- horizontal spacing -->
           </div>
           <div class="col-3">
-            <div class="float-right text-secondary"> Aug 21 2019 </div>
+            <div class="float-right text-secondary"> {{ review.pub_date_pretty }} </div>
           </div>
         </div>
       </div>
       <div class="card-body">
-        <h5 class="card-title">Average Rating (4.5) </h5>
-        <p class="card-text">Contrary to popular belief, Lorem Ipsum is not </p>
+        <h5 class="card-title">Average Rating ({{review.avg_rating |floatformat:1 }}) </h5>
+        <p class="card-text"> {{review.general_comments}} </p>
 
 
 
@@ -103,7 +105,7 @@
           <div class="row">
           <div> Click to see full review </div>
           </div>
-          <span class="oi oi-caret-bottom"></span>
+          <!-- <span class="oi oi-caret-bottom"></span> -->
         </a>
 
       </div>
@@ -111,6 +113,7 @@
   </div>
 </div>
 
+{% endfor %}
 
 
 <br/><br/> <!-- vertical spacing -->
@@ -173,10 +176,8 @@
     <p> {{review.general_comments}} </p>
     </div>
 
-     <!--  Make this into scroll - nvm
-      Create loop and feed in data
-      Add option for reviewer to add name, else anonomous
-      Add date -->
+
+
 
     </div>
 </div>
