@@ -1,50 +1,109 @@
+
 {% extends 'base.html' %}
+
+
 
 {% block content %}
 
-<div class="row">
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h1 class="display-4">User Testing of Content</h1>
-      <p class="lead"></p>
-    </div>
-</div>
-<div class="row">
-    <div class="col-8">
-    </div>
-    <div class="col-4">
-        <a class="navbar-brand text-dark" href="{% url 'add' %}"> <h4> <span class="oi oi-plus"></span> Press to Add Content </h4> </a>
-    </div>
-</div>
-
-<br/>
 <div class="container">
 
-{% for content in content.all reversed %}
-    <div class="card-deck" onclick="window.location='{% url 'details' content.id %}';" style="cursor: pointer;">
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-8">
-                        <h4 class="card-title pricing-card-title"> {{ content.title }}</h4>
-                    </div>
-                    <div class="col-2 ml-auto">
-                        <p> <span class="oi oi-comment-square"></span> Reviews: {{ content.review_set.count }}</p>
-                        <!-- possible to have a for loop inside this one?  -->
-                    </div>
-                    <div class="col-2 ml-auto">
-                        <p> <span class="oi oi-star"></span> Avg Rating: {{ content.avg | floatformat:1 }}  </p>
-                    </div>
-                </div>
-            </div>
+    <br/><br/><br/><br/> <!-- vertical spacing -->
+    <div class="row">
+
+        <div class="col-2 my-div">
+            <!-- horizontal spacing -->
+        </div>
+
+        <div class="col-4 my-div">
+            <h3> Your Content </h3>
+        </div>
+
+        <div class="col-4 my-div ">
+             <a href="{% url 'add' %}">
+             <button type="button" class="btn btn-success float-right" >
+                Create
+             </button>
+              </a>
+        </div>
+
+    </div>
+
+    <br/> <!-- vertical spacing -->
+
+    <!-- second row -->
+    <div class="row">
+        <div class="col-2 my-div">
+            <!-- horizontal spacing -->
+        </div>
+        <div class="col-4 my-div">
+            <p> Total (4) </p>
         </div>
     </div>
-{% endfor %}
 
+    <br/> <!-- vertical spacing -->
+
+    <!-- third row -->
+    <div class="row">
+
+        <div class="col-2 my-div">
+            <!-- horizontal spacing -->
+        </div>
+
+        <!-- Here we have the pieces of content -->
+        <div class="col-8 my-div">
+            {% for content in content.all reversed %}
+                <div class="card-deck" onclick="window.location='{% url 'details' content.id %}';" style="cursor: pointer;">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <!-- Here the row begins -->
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row my-row">
+                                        <div class="col">
+                                             <h4 class="card-title pricing-card-title"> {{ content.title }}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row my-row">
+                                        <div class="col">
+                                            <p> Rating: {{ content.avg | floatformat:1 }}</p> <!-- I need to change this to another color -->
+                                        </div>
+                                        <div class="col">
+                                            <p> Reviews: {{ content.review_set.count }} </p>
+                                        </div>
+                                        <div class="col">
+                                            <p> 27 Sep 2010 </p> <!-- I need to change this to another color -->
+                                        </div>
+                                        <div class="col-5">
+                                        </div>
+
+                                    </div> <!-- row end -->
+
+
+                                </div>
+                            </div> <!-- row end -->
+
+
+
+
+
+
+
+                            <!-- Here the row stops -->
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    <!-- row 3 end  -->
+    </div>
+
+  <br/><br/><br/><br/><br/><br/><br/> <!-- vertical spacing -->
+
+
+<!-- container div -->
 </div>
+
 
 
 {% endblock %}
-
-
-
 

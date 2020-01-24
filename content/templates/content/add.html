@@ -8,27 +8,36 @@
 <br/>
 {% endif %}
 
-<div class="container">
-    <div class="row">
-    </div>
-        <div class="col-8 mx-auto">
-            <h1 class="h3 mb-3 font-weight-normal"> Add Content </h1>
-                <form method="POST" action="{% url 'add' %}">
-                {% csrf_token %}
-                    <br/>
-                    Title:
-                    <input type='text' name='title' class="form-control"/>
-                    <br/>
-                    Body:
-                     <textarea class="form-control" name='body' rows="20"></textarea>
-                    <br/>
-                    <br/>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Add Content!</button>
-                </form>
-        </div>
-        <br/>
-        <br/>
-    </div>
+
+
 </div>
+
+<br/><br/><br/><br/>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8 mx-auto">
+                <h3> Create Content </h3>
+                    <form method="POST" action="{% url 'add' %}">
+                    {% csrf_token %}
+                        <br/>
+                        <input type='text' name='title' placeholder="Title" class="form-control"/>
+                        <br/>
+                         <textarea class="form-control" name='body' placeholder="Body" rows="20"></textarea>
+                        <br/>
+                        <br/>
+                        <div class= "row">
+                            <div class ="col-2 mx-auto">
+                                <button class="btn btn-success btn-block" type="submit">Create!</button>
+                                </form>
+                            </div>
+                        </div>
+            </div>
+        </div>
+            <br/>
+            <br/>
+
+        </div>
+    </div>
 
 {% endblock %}

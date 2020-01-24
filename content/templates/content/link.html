@@ -2,34 +2,59 @@
 
 {% block content %}
 
+
+<br/><br/><br/><br/>
+
+
 <div class="row">
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h1 class="display-4">User Testing of Content</h1>
-      <p class="lead"></p>
+    <div class="col-4 mx-auto">
+        <h3> Your content has been created! </h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-10 mx-auto">
+        <hr/>
     </div>
 </div>
 
-<br/>
-<br/>
-<br/>
+<br/><br/>
 
 <div class="row">
-    <div class="col-5 mx-auto">
-        <h3 class="text-center"> <span class="oi oi-check"></span>Thank you for adding your content!</h3>
+    <div class="col-6 mx-auto ">
+        <div class="text-secondary d-flex justify-content-center"> Copy the link and send it to readers you want feedback from </div>
     </div>
 </div>
-    <br/>
+
+
+<br/><br/>
+
 <div class="row">
+    <div class="col ">
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-outline-success ">Copy Link</button>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+<!-- <div class="row">
     <div class="col-4 mx-auto">
         <a href="{% url 'readerpage' content.id %}"> <p class="text-center"> Send this link to the person you want feedback from </p> </a>
     </div>
-</div>
+</div> -->
+
+
     <br/>
     <br/>
 <div class="row">
     <div class="col-4 mx-auto">
-        <a href="{% url 'home' %}" class="navbar-brand text-dark"> <h3> <span class="oi oi-arrow-circle-left"></span> Go Back </h3> </a>
+        <a href="{% url 'home' %}" class="navbar-brand text-dark">  <span class="oi oi-arrow-circle-left"></span>  </a>
     </div>
 </div>
+
+
 
 {% endblock %}

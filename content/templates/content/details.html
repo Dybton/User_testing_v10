@@ -3,6 +3,9 @@
 {% block content %}
 
 <div class="container">
+
+  <br/><br/><br/><br/> <!-- vertical spacing -->
+
   <div class="row">
     <div class="col-8 mx-auto">
         <h1 class="text-center"> {{content.title}} </h1>
@@ -21,24 +24,110 @@
 {% endif %}
 
 
+<div class="row">
+
+    <div class="col-2">
+      <!-- horizontal spacing -->
+    </div>
+
+    <div class="col-2">
+        <div class="card shadow-sm bg-white rounded ">
+          <div class=" mx-auto"> <p class="pt-3"> Overall Rating: {{ content.avg |floatformat:1 }} </p>  </div>
+        </div>
+    </div>
+    <div class="col-2 ">
+        <div class="card shadow-sm bg-white rounded ">
+          <div class=" mx-auto"> <p class="pt-3"> Brevity: {{ content.avg_rr |floatformat:1}} </p>  </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="card shadow-sm bg-white rounded ">
+          <div class=" mx-auto"> <p class="pt-3"> Clarity:  {{ content.avg_ar |floatformat:1 }} </p> </div>
+        </div>
+    </div>
+    <div class="col-2 ">
+        <div class="card shadow-sm bg-white rounded ">
+          <div class=" mx-auto"> <p class="pt-3"> Interest: 3.0 </p> </div>
+        </div>
+    </div>
+
+</div>
+
+<br/><br/> <!-- vertical spacing -->
+
+<div class="row">
+  <div class="col-2">
+      <!-- horizontal spacing -->
+  </div>
+
+  <div class="col-8 ">
+    <div class="card text">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-3">
+            <div class="text-primary"> Name Nameson </div>
+          </div>
+          <div class="col-6">
+            <!-- horizontal spacing -->
+          </div>
+          <div class="col-3">
+            <div class="float-right text-secondary"> Aug 21 2019 </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Average Rating (4.5) </h5>
+        <p class="card-text">Contrary to popular belief, Lorem Ipsum is not </p>
 
 
-  <div class="card col-8 mx-auto shadow-sm pt-4 pr-4 pl-4 mb-4 bg-light rounded">
-    <div class="row">
-      <div class="card col-3 shadow-sm pt-3 pr-3 pl-3 pb-3 mb-4 ml-4 mr-1 bg-white rounded ">
-        <div class=" mx-auto"> Avg Rating: {{ content.avg |floatformat:1 }} </div>
+
+      <div class="collapse" id="review">
+
+
+        <h5 class="card-title">Brevity (4.5) </h5>
+        <p class="card-text">Contrary to popular belief, Lorem Ipsum is not </p>
+
+        <h5 class="card-title">Interest (4.5) </h5>
+        <p class="card-text">Contrary to popular belief, Lorem Ipsum is not </p>
+
+        <h5 class="card-title">Clarity (4.5) </h5>
+        <p class="card-text">Contrary to popular belief, Lorem Ipsum is not </p>
+
+
       </div>
-      <div class="card col-4 shadow-sm pt-3 pr-3 pl-3 pb-3 mb-4 mr-1 bg-white rounded ">
-        <div class="mx-auto"> Avg Readability: {{ content.avg_rr |floatformat:1}} </div>
+
       </div>
-      <div class="card col-4 shadow-sm pt-3 pr-3 pl-3 pb-3 mb-4 bg-white rounded ">
-        <div class="mx-auto"> Avg Actionability: {{ content.avg_ar |floatformat:1 }} </div>
+
+      <div class="card-footer text-muted text-center">
+        <a href="#" class="btn" data-toggle="collapse" data-target="#review">
+          <div class="row">
+          <div> Click to see full review </div>
+          </div>
+          <span class="oi oi-caret-bottom"></span>
+        </a>
+
       </div>
     </div>
   </div>
+</div>
+
+
+
+<br/><br/> <!-- vertical spacing -->
+
+<!--  Find an icon  => break -->
+<!-- Create the functionality -->
+
+
+<!-- <button class="btn btn-primary" data-toggle="collapse" data-target="#content"> Some text </button>
+<div class="collapse" id="content">
+  Content goes here
+</div> -->
+
+
+
 
 {% for review in reviews reversed %}
-
 
   <div class="card col-8 mx-auto shadow-sm pt-1 pr-4 pl-2 mb-4 bg-white rounded">
   <div class="row">

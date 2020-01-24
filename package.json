@@ -1,0 +1,23 @@
+{
+  "name": "user_testing_v10",
+  "version": "1.0.0",
+  "description": "user_testing-project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dybton/User_testing_v10.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dybton/User_testing_v10/issues"
+  },
+  "homepage": "https://github.com/Dybton/User_testing_v10#readme",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "sass": "^1.25.0"
+  }
+}

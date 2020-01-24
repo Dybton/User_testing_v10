@@ -12,18 +12,62 @@
 
     <title> User Testing of Content </title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
-
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href= "{% static 'open-iconic/font/css/open-iconic-bootstrap.css' %}" rel="stylesheet">
+
+ <!--  <link rel= "stylesheet" href="/User_testing_v10/main.css"> -->
+   <link rel= "stylesheet" href="../../main.css">
+   <link rel= "stylesheet" href="/main2.css">
+
+
+  <link href= "{% static 'open-iconic/font/css/open-iconic-bootstrap.css' %}" rel="stylesheet">
+
+  <style>
+
+body {
+  margin: 0;
+  font-family: Helvetica Neue;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #FAF6F5;
+}
+
+:root {
+  --secondary: #6c757d;
+}
+
+.my-div {
+  border: 1px solid green;
+}
+
+.my-row {
+  border: 1px solid red;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: #333; /* old IE */
+    background-color: #333; /* Modern Browsers */
+}
+
+primary {
+  color: blue;
+}
+
+  </style>
+
 </head>
 
 <body>
     <header>
-      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
+      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 border-bottom shadow-sm bg-light ">
          <a class="navbar-brand text-dark" href="{% url 'home' %}">
-            <h4 class="my-0 mr-md-auto font-weight-strong" style="color:#C98770">FeedbackBuddy</h5>
+            <h4 class="my-0 mr-md-auto font-weight-strong">FeedbackBuddy</h5>
           </a>
         <h5 class="my-0 mr-md-auto font-weight-normal"> <!-- To keep distance  --> </h5>
         <nav class="my-2 my-md-0 mr-md-3">
@@ -38,7 +82,7 @@
               </form>
         {% else %}
         <nav>
-          <a class="btn btn-primary mr-md-1" href="{% url 'login' %}">Login</a>
+          <a class="btn btn-primary mr-md-1 my-div" href="{% url 'login' %}">Login</a>
           <a class="btn btn-outline-primary" href="{% url 'signup' %}">Sign up</a>
         </nav>
         {% endif %}
@@ -56,9 +100,10 @@
     <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
     </html>
 
