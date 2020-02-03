@@ -66,12 +66,12 @@ WSGI_APPLICATION = 'user_testing.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = { # Postgresdatabase
+# DATABASES = {  # Postgresdatabase
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'user_testing1',
-#         'USER': 'postgres',
-#         'PASSWORD': 'django1234',
+#         'NAME': 'jakobs_database',
+#         'USER': 'djangodbman',
+#         'PASSWORD': 'rødhåretmandtogminepenge',
 #         'HOST': 'localhost',
 #         'PORT': '5432',
 #     }

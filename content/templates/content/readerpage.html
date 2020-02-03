@@ -4,6 +4,8 @@
 
 {% block content %}
 
+<br/><br/><br/><br/>
+
 <div class="container">
   <div class="row">
     <div class="col-8 mx-auto">
@@ -16,18 +18,87 @@
 <br/>
 <br/>
 
-<form method="post">
-{% csrf_token %}
+<form method="post" class="uniForm">
+  {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group col-6 mx-auto">
+        {{ form|crispy }}
+      </div>
+    </div>
+    <div class="col-2"> </div>
 
-<div class="form-row">
-  <div class="form-group card col-8 mx-auto shadow-sm pt-4 pr-4 pl-4 mb-5 bg-white rounded">
-    <div class="card-body form-group">
-      {{ form.name|as_crispy_field }}
 
-<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+</div>
+
+  <div class="row">
+    <button type="submit" class="btn btn-primary col-2 mx-auto">Submit</button>
+  </div>
 
 </form>
-          <br/>
+
+<br/>
+<br/>
+
+<!--
+
+    <div class="form-row">
+      <div class="form-group col-8 mx-auto">
+        {{ form.interest_rating|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-8 mx-auto">
+        {{ form.interest|as_crispy_field }}
+      </div>
+    </div>
+
+     <div class="form-row">
+        <div class="form-group col-8 mx-auto">
+         {{ form.clarity_rating|as_crispy_field }}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-8 mx-auto">
+            {{ form.clarity|as_crispy_field }}
+        </div>
+      </div>
+
+       <div class="form-row">
+        <div class="form-group col-8 mx-auto">
+            {{ form.interest_rating|as_crispy_field }}
+        </div>
+      </div>
+
+
+       <div class="form-row">
+        <div class="form-group col-8 mx-auto">
+            {{ form.interest|as_crispy_field }}
+        </div>
+      </div>
+
+
+       <div class="form-row">
+        <div class="form-group col-8 mx-auto">
+            {{ form.brevity_rating|as_crispy_field }}
+        </div>
+      </div>
+
+       <div class="form-row">
+        <div class="form-group col-8 mx-auto">
+            {{ form.brevity|as_crispy_field }}
+        </div>
+      </div>
+
+       <div class="form-row">
+        <div class="form-group col-8 mx-auto">
+            {{ form.general_comments|as_crispy_field }}
+        </div>
+      </div>
+
+
+          <br/>s
           <br/>
     </div>
   </div>
@@ -35,7 +106,7 @@
 
 
 
-<!-- <form method="post">
+ <form method="post">
 {% csrf_token %}
 
 <div class="form-row">

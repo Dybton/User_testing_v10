@@ -37,17 +37,17 @@
     </div>
     <div class="col-2 ">
         <div class="card shadow-sm bg-white rounded ">
-          <div class=" mx-auto"> <p class="pt-3"> Brevity: {{ content.avg_rr |floatformat:1}} </p>  </div>
+          <div class=" mx-auto"> <p class="pt-3"> Interest: {{ content.avg_ir |floatformat:1}} </p>  </div>
         </div>
     </div>
     <div class="col-2">
         <div class="card shadow-sm bg-white rounded ">
-          <div class=" mx-auto"> <p class="pt-3"> Clarity:  {{ content.avg_ar |floatformat:1 }} </p> </div>
+          <div class=" mx-auto"> <p class="pt-3"> Clarity: {{ content.avg_cr |floatformat:1 }} </p> </div>
         </div>
     </div>
     <div class="col-2 ">
         <div class="card shadow-sm bg-white rounded ">
-          <div class=" mx-auto"> <p class="pt-3"> Interest: 3.0 </p> </div>
+          <div class=" mx-auto"> <p class="pt-3"> Brevity: {{ content.avg_br |floatformat:1 }} </p> </div>
         </div>
     </div>
 
@@ -78,30 +78,33 @@
         </div>
       </div>
       <div class="card-body">
-        <h5 class="card-title">Average Rating ({{review.avg_rating |floatformat:1 }}) </h5>
+        <h5 class="card-title font-strong">Overall Rating: {{review.avg_rating |floatformat:1 }} </h5>
         <p class="card-text"> {{review.general_comments}} </p>
 
+      <div class="collapse" id="{{review.id}}">
+      <hr/>
 
 
-      <div class="collapse" id="review">
+        <h5 class="card-title"> Interest Rating: {{review.interest_rating |floatformat:1 }} </h5>
+        <p class="card-text"> Question: What is unintersting? What do you suggest be rewritten to better sustain your interest? <br/>
+        Answer: {{review.interest}} </p>
+      <hr/>
 
+        <h5 class="card-title"> Clarity Rating: {{review.clarity_rating |floatformat:1 }} </h5>
+        <p class="card-text"> Question: What’s unclear? Are you left with any unaswered questions? <br/> Answer: {{review.clarity}} </p>
 
-        <h5 class="card-title">Brevity (4.5) </h5>
-        <p class="card-text">Contrary to popular belief, Lorem Ipsum is not </p>
+      <hr/>
 
-        <h5 class="card-title">Interest (4.5) </h5>
-        <p class="card-text">Contrary to popular belief, Lorem Ipsum is not </p>
+        <h5 class="card-title"> Brevity Rating: {{review.brevity_rating |floatformat:1 }} </h5>
 
-        <h5 class="card-title">Clarity (4.5) </h5>
-        <p class="card-text">Contrary to popular belief, Lorem Ipsum is not </p>
-
-
+        <p class="card-text"> Question: If you had to delete 20% what would you remove? <br/> Answer: {{review.brevity}}  </p>
+      <hr/>
       </div>
 
       </div>
 
       <div class="card-footer text-muted text-center">
-        <a href="#" class="btn" data-toggle="collapse" data-target="#review">
+        <a href="#" class="btn" data-toggle="collapse" data-target="#{{review.id}}">
           <div class="row">
           <div> Click to see full review </div>
           </div>
@@ -113,82 +116,20 @@
   </div>
 </div>
 
+<br/>
+
 {% endfor %}
 
 
 <br/><br/> <!-- vertical spacing -->
 
-<!--  Find an icon  => break -->
-<!-- Create the functionality -->
+<a href="{% url 'readerpage' content.id %}">  <p class="text-center"> Copy and send this link to the readers you want feedback from </p> </a>
 
 
-<!-- <button class="btn btn-primary" data-toggle="collapse" data-target="#content"> Some text </button>
-<div class="collapse" id="content">
-  Content goes here
-</div> -->
-
-
-
-
-{% for review in reviews reversed %}
-
-  <div class="card col-8 mx-auto shadow-sm pt-1 pr-4 pl-2 mb-4 bg-white rounded">
-  <div class="row">
-  <div class="col-4 ">
-        <div class="row">
-          <div class ="col-9 mb-3 ml-3 mt-3 text-primary"> {{ review.name }}</div>
-        </div>
-        <div class="row">
-          <div class ="col mb-3 ml-3 text-muted"> {{ review.pub_date_pretty }} </div>
-        </div>
-        <div class="row">
-          <div class="card col-10 shadow-sm pt-3 pl-3 pb-3 mb-2 ml-3 bg-white rounded ">
-            <div class=" mx-auto"> Avg Rating: {{review.avg_rating |floatformat:1 }} </div>
-          </div>
-          <div class="card col-10 shadow-sm pt-3 pl-3 pb-3 mb-2 ml-3 bg-white rounded ">
-            <div class=" mx-auto"> Actionability: {{review.actionability_rating |floatformat:1 }} </div>
-          </div>
-          <div class="card col-10 shadow-sm pt-3 pl-3 pb-3 mb-2 ml-3 bg-white rounded ">
-            <div class=" mx-auto"> Readability: {{review.readability_rating |floatformat:1 }} </div>
-          </div>
-        </div>
-  </div>
-
-  <div class="col-8 mt-3">
-    <div class="row mt-1">
-    <h5> <u> Readability Comments </u> </h5>
-    </div>
-    <div class="row">
-    <p> {{review.readability}} </p>
-    </div>
-
-    <div class="row">
-    <h5> <u> Actionability Comments </u> </h5>
-    </div>
-    <div class="row">
-    <p> {{review.actionability}} </p>
-    </div>
-
-    <div class="row">
-    <h5> <u> General Comments </u> </h5>
-    </div>
-    <div class="row">
-    <p> {{review.general_comments}} </p>
-    </div>
-
-
-
-
-    </div>
 </div>
 </div>
 
-</div>
-
-{% endfor %}
-
-<a href="{% url 'readerpage' content.id %}"> <p class="text-center"> Send this link to the person you want feedback from </p> </a>
-
+<br/>
 
 <!--   <div class="card col-8 mx-auto shadow-sm pt-3 pr-4 pl-4 mb-4 bg-white rounded">
     <div class="row">

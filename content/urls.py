@@ -8,6 +8,7 @@ urlpatterns = [
     path('<int:content_id>', views.details, name='details'),
     path('link/<int:content_id>', views.link, name='link'),
     path('readerpage/<int:content_id>', views.readerpage, name='readerpage'),
+    path('thank_you/<int:content_id>', views.thank_you, name='thank_you'),
 
 ]
 

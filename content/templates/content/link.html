@@ -5,38 +5,41 @@
 
 <br/><br/><br/><br/>
 
+<div class="container">
 
 <div class="row">
-    <div class="col-4 mx-auto">
-        <h3> Your content has been created! </h3>
+    <div class="col-6 mx-auto d-flex align-items-center">
+        <h2 class="mx-auto"> Your content has been created! </h2>
     </div>
 </div>
+
+
+
 <div class="row">
-    <div class="col-10 mx-auto">
+    <div class="col-8 mx-auto">
         <hr/>
     </div>
 </div>
 
-<br/><br/>
+<br/>
 
 <div class="row">
     <div class="col-6 mx-auto ">
-        <div class="text-secondary d-flex justify-content-center"> Copy the link and send it to readers you want feedback from </div>
+        <a href="{% url 'readerpage' content.id %}">  <p class="text-center"> Copy and send this link to the readers you want feedback from </p> </a>
     </div>
 </div>
 
 
-<br/><br/>
+<br/>
 
-<div class="row">
+<!-- <div class="row">
     <div class="col ">
         <div class="d-flex justify-content-center">
             <button type="button" class="btn btn-outline-success ">Copy Link</button>
         </div>
     </div>
-</div>
+</div> -->
 
-</div>
 
 
 
@@ -47,14 +50,25 @@
 </div> -->
 
 
-    <br/>
+
+
     <br/>
 <div class="row">
-    <div class="col-4 mx-auto">
-        <a href="{% url 'home' %}" class="navbar-brand text-dark">  <span class="oi oi-arrow-circle-left"></span>  </a>
+    <div class="col-4 mx-auto ">
+
     </div>
 </div>
 
+<div class="row">
+    <div class="col-4 mx-auto">
+        <button class="btn btn-primary d-flex mx-auto">
+        <a href="{% url 'home' %}" class="navbar-brand text-white">  <span class="oi oi-arrow-circle-left" style="font-size:25px; vertical-align: middle;"></span> <span> Return to home </span> </a>
+        </button>
+    </div>
+</div>
+
+</div>
 
 
 {% endblock %}
+

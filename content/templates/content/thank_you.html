@@ -1,1 +1,66 @@
-test
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<br/><br/><br/><br/>
+
+<div class="container">
+
+<div class="row">
+    <div class="col-6 mx-auto d-flex align-items-center">
+        <h2 class="mx-auto"> Thank you for reviewing: {{ content.title }} </h2>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-8 mx-auto">
+        <hr/>
+    </div>
+</div>
+
+<br/>
+
+
+<!-- <div class="row">
+    <div class="col ">
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-outline-success ">Copy Link</button>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+<!-- <div class="row">
+    <div class="col-4 mx-auto">
+        <a href="{% url 'readerpage' content.id %}"> <p class="text-center"> Send this link to the person you want feedback from </p> </a>
+    </div>
+</div> -->
+
+
+
+
+    <br/>
+<div class="row">
+    <div class="col-4 mx-auto ">
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4 mx-auto">
+        <button class="btn btn-primary d-flex mx-auto">
+        <a href="{% url 'home' %}" class="navbar-brand text-white">  <span class="oi oi-arrow-circle-left" style="font-size:25px; vertical-align: middle;"></span> <span> Return to home </span> </a>
+        </button>
+    </div>
+</div>
+
+</div>
+
+
+{% endblock %}
+

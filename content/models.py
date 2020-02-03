@@ -16,14 +16,17 @@ class Content(models.Model):
 
 class Review(models.Model):
     content = models.ForeignKey(Content, null=True, on_delete=models.CASCADE)
-    name = models.CharField(null=True, max_length=200)
+    name = models.CharField(null=True, max_length=10)
     pub_date = models.DateTimeField(null=True)
-    readability = models.CharField(null=True, max_length=500)
-    readability_rating = models.IntegerField(null=True)
-    actionability = models.CharField(null=True, max_length=500)
-    actionability_rating = models.IntegerField(null=True)
+    interest = models.CharField(null=True, max_length=500)
+    interest_rating = models.IntegerField(null=True)
+    clarity = models.CharField(null=True, max_length=500)
+    clarity_rating = models.IntegerField(null=True)
+    brevity = models.CharField(null=True, max_length=500)
+    brevity_rating = models.IntegerField(null=True)
     general_comments = models.CharField(null=True, max_length=500)
     avg_rating = models.FloatField(null=True)
+    id = models.AutoField(primary_key=True)
 
     def _str_(self):
         return self.title

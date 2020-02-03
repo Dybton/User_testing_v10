@@ -43,8 +43,9 @@ def add(request):
 def details(request, content_id):
     content = get_object_or_404(
         Content.objects.annotate(
-            avg_rr=Avg('review__readability_rating'),
-            avg_ar=Avg('review__actionability_rating'),
+            avg_ir=Avg('review__interest_rating'),
+            avg_cr=Avg('review__clarity_rating'),
+            avg_br=Avg('review__brevity_rating'),
             avg=Avg('review__avg_rating')
         ),
         pk=content_id)
@@ -57,24 +58,34 @@ def link(request, content_id):
     return render(request, 'content/link.html', {'content': content})
 
 
+def thank_you(request, content_id):
+    content = get_object_or_404(Content, pk=content_id)
+    return render(request, 'content/thank_you.html', {'content': content})
+
+
 def readerpage(request, content_id):
     content = get_object_or_404(Content, pk=content_id)
-    form = ReviewForm(request.POST)
-    if form.is_valid():
-        review = form.save(commit=False)
-        review.content = content
-        readability_rating = form.cleaned_data['readability_rating']
-        readability = form.cleaned_data['readability']
-        actionability_rating = form.cleaned_data['actionability_rating']
-        actionability = form.cleaned_data['actionability']
-        general_comments = form.cleaned_data['general_comments']
-        review.avg_rating = (float(readability_rating) +
-                             float(actionability_rating)) / 2
-        review.pub_date = timezone.datetime.now()
-        review.save()
-        return redirect('home')
-    args = {'content': content, 'form': form}
-    return render(request, 'content/readerpage.html', args)
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.content = content
+            interest_rating = form.cleaned_data['interest_rating']
+            interest = form.cleaned_data['interest']
+            clarity_rating = form.cleaned_data['clarity_rating']
+            clarity = form.cleaned_data['clarity']
+            brevity_rating = form.cleaned_data['clarity_rating']
+            brevity = form.cleaned_data['clarity']
+            general_comments = form.cleaned_data['general_comments']
+            review.avg_rating = (float(interest_rating) +
+                                 float(clarity_rating) + float(brevity_rating)) / 3
+            review.pub_date = timezone.datetime.now()
+            review.save()
+            return redirect('/content/thank_you/' + str(content.id))
+    else:
+        form = ReviewForm()
+    context = {'content': content, 'form': form}
+    return render(request, 'content/readerpage.html', context)
 
 # How can I calculate the avg_rating?
 
