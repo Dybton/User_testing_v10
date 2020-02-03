@@ -70,7 +70,7 @@ DATABASES = {  # Postgresdatabase
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'user_testing_v10_db',
-        'USER': 'postgres',
+        'USER': 'djangodbman',
         'PASSWORD': 'rødhåretmandtogminepenge',
         'HOST': 'localhost',
         'PORT': '5432',
@@ -131,6 +131,3 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
-
-try:
-    from local_settings_import *
