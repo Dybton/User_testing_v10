@@ -66,23 +66,23 @@ WSGI_APPLICATION = 'user_testing.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {  # Postgresdatabase
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'jakobs_database',
-#         'USER': 'djangodbman',
-#         'PASSWORD': 'rødhåretmandtogminepenge',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
-DATABASES = {  # SQLITE DATABASE
+DATABASES = {  # Postgresdatabase
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'user_testing_v10_db',
+        'USER': 'postgres',
+        'PASSWORD': 'rødhåretmandtogminepenge',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
+# DATABASES = {  # SQLITE DATABASE
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Password validation
@@ -131,3 +131,6 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
+
+try:
+    from local_settings_import *
