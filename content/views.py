@@ -14,9 +14,10 @@ from django.utils import timezone
 def home(request):
     content = Content.objects.annotate(
         avg=Avg('review__avg_rating')).filter(user=request.user)
+    total = Content.objects.filter(user=request.user).count()
     # Also send pub_dateo of the review
 
-    return render(request, 'content/home.html', {'content': content})
+    return render(request, 'content/home.html', {'content': content, 'total': total})
 
 
 def homepage(request):

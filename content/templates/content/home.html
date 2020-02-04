@@ -2,7 +2,6 @@
 {% extends 'base.html' %}
 
 
-
 {% block content %}
 
 <div class="container">
@@ -36,7 +35,7 @@
             <!-- horizontal spacing -->
         </div>
         <div class="col-4 my-div">
-            <p> Total (4) </p>
+            <p> Total ({{ total }}) </p>
         </div>
     </div>
 
@@ -48,6 +47,8 @@
         <div class="col-2 my-div">
             <!-- horizontal spacing -->
         </div>
+
+
 
         <!-- Here we have the pieces of content -->
         <div class="col-8 my-div">
@@ -75,18 +76,9 @@
                                         </div>
                                         <div class="col-5">
                                         </div>
-
                                     </div> <!-- row end -->
-
-
                                 </div>
                             </div> <!-- row end -->
-
-
-
-
-
-
 
                             <!-- Here the row stops -->
                         </div>
@@ -102,7 +94,6 @@
 
 <!-- container div -->
 </div>
-
 
 
 {% endblock %}

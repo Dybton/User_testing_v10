@@ -13,8 +13,11 @@ SECRET_KEY = 'dlc5)qmctyuv&%ek@qq6jm%kv^-waks6d^2ozocx)+06u+x#iu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['134.209.231.89']
 
+# Set active when going live
+# ALLOWED_HOSTS = ['134.209.231.89']
+
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -66,23 +69,25 @@ WSGI_APPLICATION = 'user_testing.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {  # Postgresdatabase
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'user_testing_v10_db',
-        'USER': 'djangodbman',
-        'PASSWORD': 'laddetskeladdetske123',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# Set active when going live
 
-# DATABASES = {  # SQLITE DATABASE
+# DATABASES = {  # Postgresdatabase
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'user_testing_v10_db',
+#         'USER': 'djangodbman',
+#         'PASSWORD': 'laddetskeladdetske123',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
 #     }
 # }
+
+DATABASES = {  # SQLITE DATABASE
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
 # Password validation
