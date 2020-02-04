@@ -15,9 +15,9 @@ DEBUG = True
 
 
 # Set active when going live
-ALLOWED_HOSTS = ['134.209.231.89']
+# ALLOWED_HOSTS = ['134.209.231.89']
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 # Application definition
 
