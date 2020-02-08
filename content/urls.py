@@ -3,7 +3,7 @@ from content import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('home', views.homepage, name='homepage'),
+    path('home', views.homepage, name='homepage'), #Here I need to add the webflow part
     path('add/', views.add, name='add'),
     path('<int:content_id>', views.details, name='details'),
     path('link/<int:content_id>', views.link, name='link'),

@@ -9,14 +9,18 @@ class Content(models.Model):
     title = models.CharField(max_length=255)
     body = models.TextField()
     reviews_total = models.FloatField(null=True)
+    pub_date = models.DateTimeField(null=True)
 
     def _str_(self):
         return self.title
 
+    def pub_date_pretty(self):
+        return self.pub_date.strftime('%b %e %Y')
+
 
 class Review(models.Model):
     content = models.ForeignKey(Content, null=True, on_delete=models.CASCADE)
-    name = models.CharField(null=True, max_length=10)
+    name = models.CharField(null=True, max_length=500)
     pub_date = models.DateTimeField(null=True)
     interest = models.CharField(null=True, max_length=500)
     interest_rating = models.IntegerField(null=True)

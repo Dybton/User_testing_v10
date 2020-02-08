@@ -21,7 +21,7 @@ def home(request):
 
 
 def homepage(request):
-    return render(request, 'content/homepage.html')
+    return redirect("http://test-188175.webflow.io")
 
 
 @login_required(login_url="/accounts/signup")
@@ -32,6 +32,7 @@ def add(request):
             content.title = request.POST['title']
             content.body = request.POST['body']
             content.user = request.user
+            content.pub_date = timezone.datetime.now()
             content.save()
             return redirect('/content/link/' + str(content.id))
         else:
