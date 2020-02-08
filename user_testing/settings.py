@@ -15,9 +15,9 @@ DEBUG = True
 
 
 # Set active when going live
-ALLOWED_HOSTS = ['134.209.231.89', 'localhost']
+# ALLOWED_HOSTS = ['134.209.231.89', 'localhost']
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -71,23 +71,23 @@ WSGI_APPLICATION = 'user_testing.wsgi.application'
 
 # Set active when going live
 
-DATABASES = {  # Postgresdatabase
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'user_testing_v10_db',
-        'USER': 'djangodbman',
-        'PASSWORD': 'laddetskeladdetske123',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-
-# DATABASES = {  # SQLITE DATABASE
+# DATABASES = {  # Postgresdatabase
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'user_testing_v10_db',
+#         'USER': 'djangodbman',
+#         'PASSWORD': 'laddetskeladdetske123',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
 #     }
 # }
+
+DATABASES = {  # SQLITE DATABASE
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
 # Password validation
